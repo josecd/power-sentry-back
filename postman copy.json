@@ -1,0 +1,578 @@
+{
+	"info": {
+		"_postman_id": "8454a7b1-24d9-47e5-b894-b647f6582562",
+		"name": "Shelly 1PM Mini Control API - Completa",
+		"description": "Colección completa para controlar dispositivos Shelly 1PM Mini con PostgreSQL, AccuWeather e histórico de eventos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30749836"
+	},
+	"item": [
+		{
+			"name": "Device Management",
+			"item": [
+				{
+					"name": "Create Device",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Luz pasillo\",\n  \"ipAddress\": \"192.168.1.100\",\n  \"description\": \"Control de la luz del pasillo\",\n  \"latitude\": 21.034095449489612,\n  \"longitude\": -86.78886871583721,\n  \"weatherControlEnabled\": true,\n  \"sunriseSunsetControl\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/shelly",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Devices",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Device",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"name\": \"Luz test\",\n  \"weatherControlEnabled\": true,\n  \"turnOnWhenRain\": true,\n  \"turnOnWhenTempBelow\": 10\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Device",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manual Control",
+			"item": [
+				{
+					"name": "Turn On Device",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/toggle/on",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"toggle",
+								"on"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Turn Off Device",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/toggle/off",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"toggle",
+								"off"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Status",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/status",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Metrics",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/update-metrics",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"update-metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Device Status Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/checkSunTimes",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"checkSunTimes"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Weather Control",
+			"item": [
+				{
+					"name": "Setup Weather Control",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/setup-weather-control",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"setup-weather-control"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check Weather Action",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/check-weather",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"check-weather"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Check All Devices Weather",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/check-all-weather",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"check-all-weather"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Sunrise/Sunset Control",
+			"item": [
+				{
+					"name": "Enable Sun Control",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"turnOnAtSunrise\": true,\n  \"turnOffAtSunset\": true\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/enable-sun-control",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"enable-sun-control"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Sun Times",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/sun-times",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"sun-times"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Sun Times",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/shelly/{{device_id}}/update-sun-times",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"shelly",
+								"{{device_id}}",
+								"update-sun-times"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "History",
+			"item": [
+				{
+					"name": "Get Device History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/{{device_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"history",
+								"{{device_id}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Last On Event",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/{{device_id}}/last-on",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"history",
+								"{{device_id}}",
+								"last-on"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Events in Period",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/{{device_id}}/period?start={{start_date}}&end={{end_date}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"history",
+								"{{device_id}}",
+								"period"
+							],
+							"query": [
+								{
+									"key": "start",
+									"value": "{{start_date}}"
+								},
+								{
+									"key": "end",
+									"value": "{{end_date}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Filtered History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/history/{{device_id}}/filter?action=turn_on",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"history",
+								"{{device_id}}",
+								"filter"
+							],
+							"query": [
+								{
+									"key": "action",
+									"value": "turn_on"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Energy Monitoring",
+			"item": [
+				{
+					"name": "Get Consumption History",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/energy/{{device_id}}/history?period=week",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"energy",
+								"{{device_id}}",
+								"history"
+							],
+							"query": [
+								{
+									"key": "period",
+									"value": "week"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Energy Summary",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/energy/{{device_id}}/summary",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"energy",
+								"{{device_id}}",
+								"summary"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Daily Consumption",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/energy/{{device_id}}/daily?days=7",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"energy",
+								"{{device_id}}",
+								"daily"
+							],
+							"query": [
+								{
+									"key": "days",
+									"value": "7"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"console.log('Running request for ' + pm.request.url);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.test(\"Status code is successful\", function () {",
+					"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+					"});",
+					"",
+					"pm.test(\"Response time is acceptable\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(1000);",
+					"});",
+					"",
+					"pm.test(\"Response has valid structure\", function () {",
+					"    const jsonData = pm.response.json();",
+					"    pm.expect(jsonData).to.be.an('array').or.to.be.an('object');",
+					"    if (pm.response.request.method === 'GET') {",
+					"        pm.expect(pm.response.headers.get('Content-Type')).to.include('application/json');",
+					"    }",
+					"});"
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000"
+		},
+		{
+			"key": "device_id",
+			"value": "1"
+		},
+		{
+			"key": "start_date",
+			"value": "2023-11-01"
+		},
+		{
+			"key": "end_date",
+			"value": "2023-11-30"
+		}
+	]
+}

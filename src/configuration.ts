@@ -6,5 +6,6 @@ export const configurationEnv = () => {
     USERNAME: process.env.USERNAME,
     DATABASE: process.env.DATABASE,
     JWT_SECRET: process.env.JWT_SECRET,
-    JWT_EXPIRATION_TIME: process.env.JWT_EXPIRATION_TIME
+    JWT_EXPIRATION_TIME: process.env.JWT_EXPIRATION_TIME,
+    ACCUWEATHER_API_KEY:process.env.ACCUWEATHER_API_KEY
 }}

@@ -6,6 +6,8 @@ import { ShellyModule } from './shelly/shelly.module';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { ConfigModule } from '@nestjs/config';
 import { configurationEnv } from './configuration';
+import { WeatherModule } from './weather/weather.module';
+import { EnergyModule } from './energy/energy.module';
 
 @Module({
   imports: [ 
@@ -24,6 +26,8 @@ import { configurationEnv } from './configuration';
       entities: [__dirname + "/**/*.entity{.ts,.js}"],
       synchronize: true
     }),
+    WeatherModule,
+    EnergyModule,
   ],
   controllers: [AppController],
   providers: [AppService],
