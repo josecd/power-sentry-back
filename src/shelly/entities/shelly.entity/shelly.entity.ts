@@ -67,6 +67,12 @@ export class ShellyDevice {
   @Column({ nullable: true })
   sunsetTime: string;   // Formato "HH:MM"
 
+  @Column({ nullable: true })
+  location: string;
+
+  @Column({ nullable: true })
+  apiUrl: string;
+
   @OneToMany(() => DeviceHistory, history => history.device)
   history: DeviceHistory[];
 
