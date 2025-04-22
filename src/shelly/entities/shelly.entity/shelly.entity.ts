@@ -73,6 +73,9 @@ export class ShellyDevice {
   @Column({ nullable: true })
   apiUrl: string;
 
+  @Column({ nullable: true })
+  idGlobalDevice: string;
+
   @OneToMany(() => DeviceHistory, history => history.device)
   history: DeviceHistory[];
 
