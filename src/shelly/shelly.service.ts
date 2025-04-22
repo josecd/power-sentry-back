@@ -163,7 +163,7 @@ export class ShellyService {
   }
 
   // Programar chequeos periódicos (ejemplo cada hora)
-  @Cron('0 * * * *') // Cada hora en el minuto 0
+  //@Cron('0 * * * *') // Cada hora en el minuto 0
   async scheduledWeatherCheck() {
     console.log("Activate scheduledWeatherCheck ");
     
@@ -200,7 +200,7 @@ export class ShellyService {
     }
   }
 
-  @Cron('*/5 * * * *') // Cada 30 minutos
+  @Cron('*/5 * * * *') // Cada 30 minutos checa si es de noche o día
   async checkSunTimes() {
     console.log("Activate checkSunTimes ");
     const devices = await this.shellyRepository.find({ 
